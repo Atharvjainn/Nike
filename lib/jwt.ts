@@ -9,14 +9,14 @@ export interface AuthTokenPayload extends JwtPayload{
 }
 
 export const generateToken = (userId : string) : string => {
-    const token = jwt.sign({userId},JWT_SECRET as string,{expiresIn : "7d"})
+    const token = jwt.sign({userId},JWT_SECRET!,{expiresIn : "7d"})
     return token;
 }
 
 
 export const verifyToken = async(token : string) => {
     if(!token) throw new Error("Unauthorised! No Token Provided");
-    const decoded = jwt.verify(token,JWT_SECRET as string) as AuthTokenPayload;
+    const decoded = jwt.verify(token,JWT_SECRET!) as AuthTokenPayload;
     if(!decoded) throw new Error("Unauthorised! Invalid Token");
     const user = await User.findById(decoded.userId).select("-password")
     return user;

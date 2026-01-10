@@ -27,7 +27,7 @@ const connectDB = async (): Promise<typeof mongoose> => {
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGO_URL as string)
+    cached.promise = mongoose.connect(MONGO_URL!)
   }
 
   cached.conn = await cached.promise
