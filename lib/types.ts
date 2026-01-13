@@ -3,3 +3,4 @@ export type UserType = {
     password : string,
     fullName : string
 }
+
