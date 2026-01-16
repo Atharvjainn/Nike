@@ -12,7 +12,7 @@ const UserSchema = new Schema<UserType>({
         required : true,
         minlength : 6
     },
-    fullName : {
+    name : {
         type : String,
         required : true
     },
